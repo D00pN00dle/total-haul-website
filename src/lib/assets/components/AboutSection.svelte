@@ -1,5 +1,6 @@
 <script>
-
+import img from '$lib/assets/images/dump-truck-orange-1.png';
+  const bgImg = img;
 </script>
 <section class="about" id="about">
   <div class="wrap about-grid">
@@ -13,8 +14,7 @@
       </div>
     </div>
     <div class="photo-slot" role="img" aria-label="Stylized TotalHAUL dump truck jobsite graphic">
-      <div class="ps-truck"></div>
-      <div class="ps-label">TRI-AXLE · QUAD-AXLE<br>Dump truck hauling for commercial projects across the Delaware Valley.</div>
+      <div class="bg-img w-100 h-100 position-absolute" style="--bg-url:url('{bgImg}'); opacity: 0.7;"></div>
     </div>
   </div>
 </section>
