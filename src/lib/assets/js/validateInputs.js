@@ -1,19 +1,36 @@
 
-/**@param {string} type */
-/**@param {string | undefined | number} value */
-export function validateInputs(type, value) {
+// /**@typedef {string} type */
+// /**@param {string | undefined | number} value */
+export function validateInputs(type='', value='') {
+    console.log('validateInputs:', type, value);
     switch (type) {
         case 'select-one':
-            return value !== '';
+            return {valid: value !== ''};
         case 'text':
-            return value.trim() !== '';
+            if (/^[A-Za-z]+$/.test(value)) {
+                return {valid: value.trim() !== ''};
+            } else {
+                return {valid: false, message: 'Please enter only letters.'};
+            }
         case 'textarea':
-            return value.trim() !== '';
+            if (value.trim() !== '') {
+                return {valid: true};
+            } else {
+                return {valid: false, message: 'This field is required.'};
+            }
         case 'email':
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                return {valid: true};
+            } else {
+                return {valid: false, message: 'Please enter a valid email address.'};
+            }
         case 'tel':
-            return /^\+?[0-9\s\-()]{7,}$/.test(value);
+            if (/^\+?[0-9\s\-()]{7,}$/.test(value)) {
+                return {valid: true};
+            } else {
+                return {valid: false, message: 'Please enter a valid phone number.'};
+            }
         default:
-            return false;
+            return {valid: false};
     }
 }

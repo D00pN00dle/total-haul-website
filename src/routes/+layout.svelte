@@ -3,14 +3,19 @@
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { onMount } from 'svelte';
+	import Rellax from 'rellax';
+	import MobileMenu from '$lib/assets/components/MobileMenu.svelte';
 
 	let { children } = $props();
 	let topbar = $state(null);
 	let header = $state(null);
-
+	let toggleMenu = $state(false);
 	let heroPaddingTop = writable(0);
-	
-
+	//@ts-ignore
+	let io;
+	function handleToggleMenu() {
+		toggleMenu = !toggleMenu;
+	}
 	$effect(() => {
 		const top = topbar?.offsetHeight ?? 0;
 		const head = header?.offsetHeight ?? 0;
@@ -18,6 +23,12 @@
 		$inspect('header height:', head);
 		heroPaddingTop.set(top + head);
 		setContext('heroPaddingTop', heroPaddingTop);
+	});
+
+	onMount(() => {
+		//@ts-ignore
+		const rellax = new Rellax('.rellax');
+
 	});
 </script>
 
@@ -34,6 +45,8 @@
 
 
 </svelte:head>
+
+<MobileMenu {toggleMenu} {handleToggleMenu} />
 <div class="topbar" bind:this={topbar}>
 	<div class="wrap">
 		<div class="certs-mini">
@@ -57,7 +70,7 @@
 			</a>
 			<div class="nav-cta ms-auto">
 				<button class="btn btn-amber" style="height: 100% !important;">Get A Quote</button>
-				<button class="menu-btn" title="Menu"><i class="bi bi-list text-white"></i></button>
+				<button class="menu-btn" title="Menu" onclick={handleToggleMenu}><i class="bi bi-list text-white" ></i></button>
 			</div>
 		</div>
 		<div class="nav-links-wrap bg-dark">

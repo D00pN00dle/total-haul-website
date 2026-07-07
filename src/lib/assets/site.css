@@ -270,11 +270,15 @@ nav.links a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 34%;
+  height: 100%;
   z-index: 0;
-  opacity: .7;
-  background-color: #0F0D0A;
-  clip-path: polygon(0 62%, 16% 40%, 33% 56%, 52% 30%, 70% 52%, 86% 36%, 100% 58%, 100% 100%, 0 100%);
+  opacity: .05;
+  background-image: var(--bg-url);
+  /* background-color: #0F0D0A;
+  clip-path: polygon(0 62%, 16% 40%, 33% 56%, 52% 30%, 70% 52%, 86% 36%, 100% 58%, 100% 100%, 0 100%); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .hero-inner {
@@ -1391,4 +1395,19 @@ footer.site {
     transition: none !important;
     scroll-behavior: auto !important
   }
+}
+
+/* 
+  #region: Custom CSS Variables
+  This section defines custom CSS variables for colors, spacing, and other design elements.
+  You can modify these variables to change the overall look and feel of the website.
+*/
+
+input, select, textarea {
+  border-radius: 3px;
+  padding: 0 12px;
+}
+
+.alert {
+  border-radius: 3px;
 }

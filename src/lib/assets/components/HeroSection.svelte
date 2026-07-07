@@ -1,6 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
-
+    import img from '$lib/assets/images/dump-truck-orange-1.png';
+    const bgImg = img;
 	let paddingValue = $state(0);
 
 	// top-level
@@ -10,10 +11,13 @@
 		paddingValue = $heroPaddingTop ?? 0;
 	});
 
+
 	$inspect('heroPaddingTop FROM CONTEXT value:', paddingValue);
 </script>
-<section class="hero d-flex flex-column my-auto py-0" style="height: calc(100vh - {paddingValue}px) !important; min-height: 600px !important;">
-    <div class="wrap hero-inner py-0 my-auto" style="height: fit-content; min-height: 600px;">
+<section class="hero d-flex flex-column my-auto py-4" 
+style="--bg-url: url('{bgImg}'); --bg-height: calc(100vh - {paddingValue}px) !important; min-height: 600px !important;"
+>
+    <div class="wrap hero-inner py-4 my-auto rellax" data-rellax-speed="7" style="height: fit-content; min-height: 600px;">
         <div class="eyebrow">
             Greater Philadelphia Area  ·  Built for contractors & public agencies
         </div>
@@ -24,7 +28,7 @@
             TotalHAUL provides dump truck hauling, disposal, dirt haul-off, and aggregate delivery for commercial contractors and public projects across the Greater Philadelphia Area — backed by owned tri-axle and quad-axle trucks plus a vetted subhauler network.
         </p>
         <div class="hero-cta">
-            <a class="btn btn-amber" href="mailto:contact@haulprotrucking.com?subject=Project%20Quote%20Request">Request a Quote
+            <a class="btn btn-amber" href="mailto:contact@totalhaultrucking.com?subject=Project%20Quote%20Request">Request a Quote
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
             </a>
             <a class="btn btn-ghost" href="tel:1-888-888-8888">
