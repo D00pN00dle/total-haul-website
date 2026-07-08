@@ -1,8 +1,8 @@
 <script>
-
+  import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
 </script>
 <section class="contact" id="contact">
-  <div class="wrap">
+  <div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
     <div class="sec-head">
       <div class="eyebrow">Get in touch</div>
       <h2>Contact HaulPRO.</h2>

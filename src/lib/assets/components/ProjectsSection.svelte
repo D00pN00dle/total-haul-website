@@ -3,9 +3,10 @@ let urlSiteDev = "https://cdn.continental.com/fileadmin/__imported/sites/corpora
 let urlRoadway = "https://images.stockcake.com/public/4/f/2/4f2e5493-9424-42c2-a2fa-b8bf573e43ce/highway-construction-view-stockcake.jpg";
 let urlDisposal = "https://diamonddemolish.com/wp-content/uploads/0-11.jpg";
 
+import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
 </script>
 <section class="projects" id="projects">
-  <div class="wrap">
+  <div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
     <div class="sec-head">
       <div class="eyebrow">Work types</div>
       <h2>The kind of work we support.</h2>

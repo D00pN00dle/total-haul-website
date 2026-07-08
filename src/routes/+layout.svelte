@@ -3,7 +3,7 @@
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { onMount } from 'svelte';
-	import Rellax from 'rellax';
+	// import Rellax from 'rellax';
 	import MobileMenu from '$lib/assets/components/MobileMenu.svelte';
 
 	let { children } = $props();
@@ -25,11 +25,11 @@
 		setContext('heroPaddingTop', heroPaddingTop);
 	});
 
-	onMount(() => {
-		//@ts-ignore
-		const rellax = new Rellax('.rellax');
+	// onMount(() => {
+	// 	//@ts-ignore
+	// 	const rellax = new Rellax('.rellax');
 
-	});
+	// });
 </script>
 
 <svelte:head>

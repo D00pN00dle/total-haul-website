@@ -1,9 +1,11 @@
 <script>
-import img from '$lib/assets/images/dump-truck-orange-1.png';
+  import img from '$lib/assets/images/dump-truck-orange-1.png';
+  import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
+
   const bgImg = img;
 </script>
 <section class="about" id="about">
-  <div class="wrap about-grid">
+  <div class="wrap about-grid" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
     <div>
       <div class="eyebrow">Who we are</div>
       <h2 style="font-size:clamp(28px,4.2vw,46px);margin:14px 0 18px;color:var(--limestone)">Construction logistics, simplified.</h2>

@@ -1,8 +1,8 @@
 <script>
-
+  import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
 </script>
 <section class="why">
-  <div class="wrap">
+  <div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
     <div class="sec-head">
       <div class="eyebrow">Why TotalHAUL</div>
       <h2>Why contractors choose us.</h2>

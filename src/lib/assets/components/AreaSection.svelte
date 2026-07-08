@@ -1,8 +1,8 @@
 <script>
-
+  	import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
 </script>
 <section class="area" id="area">
-  <div class="wrap">
+  <div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
     <div class="sec-head">
       <div class="eyebrow">Where we work</div>
       <h2>Serving Metro Philadelphia &amp; the Greater Delaware Valley.</h2>

@@ -1,8 +1,8 @@
 <script>
-
+  import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
 </script>
 <section class="certs" id="certifications">
-  <div class="wrap">
+  <div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
     <div class="sec-head">
       <div class="eyebrow">Certified &amp; compliant</div>
       <h2>A certification stack that can support your participation goals.</h2>

@@ -1,6 +1,7 @@
 <script>
 	import { validateInputs } from '../js/validateInputs.js';
 	import { enhance } from '$app/forms';    import { onMount } from 'svelte';
+	import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
 
 	let firstName = $state();
 	let lastName = $state();
@@ -55,7 +56,7 @@
 </script>
 
 <section class="cta-band">
-	<div class="wrap">
+	<div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
 		<h2>Let's talk about your project.</h2>
 		<p>
 			Email the scope — material, volume, timeline, and location — and we'll get you a project

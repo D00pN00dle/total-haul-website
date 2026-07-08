@@ -1,6 +1,8 @@
 <script>
 	import { getContext } from 'svelte';
     import img from '$lib/assets/images/dump-truck-orange-1.png';
+    import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
+
     const bgImg = img;
 	let paddingValue = $state(0);
 
@@ -17,7 +19,7 @@
 <section class="hero d-flex flex-column my-auto py-4" 
 style="--bg-url: url('{bgImg}'); --bg-height: calc(100vh - {paddingValue}px) !important; min-height: 600px !important;"
 >
-    <div class="wrap hero-inner py-4 my-auto rellax" data-rellax-speed="7" style="height: fit-content; min-height: 600px;">
+    <div class="wrap hero-inner py-4 my-auto" style="height: fit-content; min-height: 600px;" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
         <div class="eyebrow">
             Greater Philadelphia Area  ·  Built for contractors & public agencies
         </div>

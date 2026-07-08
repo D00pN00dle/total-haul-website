@@ -13,6 +13,7 @@
 	import StatsSection from '$lib/assets/components/StatsSection.svelte';
 	import WhoSection from '$lib/assets/components/WhoSection.svelte';
 	import WhySection from '$lib/assets/components/WhySection.svelte';
+
 </script>
 
 <HeroSection />

@@ -1,10 +1,11 @@
 <script>
+	import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
 
 </script>
 <div class="hazard" aria-hidden="true"></div>
 
 <section class="services" id="services">
-  <div class="wrap">
+  <div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
     <div class="sec-head">
       <div class="eyebrow">Services</div>
       <h2>Construction trucking, disposal &amp; aggregate — under one roof.</h2>
