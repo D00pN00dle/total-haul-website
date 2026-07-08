@@ -55,7 +55,7 @@
 
 </script>
 
-<section class="cta-band">
+<section class="cta-band" id="form">
 	<div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
 		<h2>Let's talk about your project.</h2>
 		<p>

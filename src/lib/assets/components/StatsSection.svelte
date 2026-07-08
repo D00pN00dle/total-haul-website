@@ -1,7 +1,7 @@
 <script>
   import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
 </script>
-<section class="stats">
+<section class="stats" id="stats">
   <div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
     <div class="sec-head">
       <div class="eyebrow">By the numbers</div>

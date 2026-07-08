@@ -2,17 +2,17 @@
 	let { toggleMenu, handleToggleMenu } = $props();
     let menuItems = [
         { label: 'Services', href: '#services' },
-        { label: 'Who We Are', href: '#who-we-are' },
-        { label: 'About Us', href: '#about-us' },
+        { label: 'Who We Are', href: '#who' },
+        { label: 'About Us', href: '#about' },
         { label: 'Partners', href: '#partners' },
-        { label: 'Why TotalHAUL', href: '#why-totalhaul' },
+        { label: 'Why TotalHAUL', href: '#why' },
         { label: 'Certifications', href: '#certifications' },
         { label: 'Stats', href: '#stats' },
         { label: 'Materials', href: '#materials' },
-        { label: 'Service Area', href: '#service-area' },
+        { label: 'Service Area', href: '#area' },
         { label: 'Projects', href: '#projects' },
         { label: 'FAQs', href: '#faqs' },
-        { label: 'Request a Quote', href: '#request-a-quote' },
+        { label: 'Request a Quote', href: '#form' },
         { label: 'Contact Us', href: '#contact-us' }
     ];
 </script>
