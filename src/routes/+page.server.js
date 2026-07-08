@@ -3,14 +3,7 @@ import { getWixClient } from '$lib/server/wix';
 
 export async function load({ request, url }) {
     //console.log('load params:', url);
-    return {seoData: {
-        url: url.origin + url.pathname,
-        title: 'TotalHAUL - Commercial Aggregate Supply, Demolition, and Hauling Services',
-        description: 'TotalHAUL is a professional junk removal, demolition, and hauling service provider serving the Greater Delaware Valley. We offer efficient and reliable solutions for commercial clients.',
-        keywords: 'junk removal, demolition services, hauling services, waste management, debris removal, construction cleanup, property cleanout',
-        image: '/images/totalhaul.jpg',
 
-    }};
 }
 /**@param {import('@sveltejs/kit').RequestEvent} event */
 export const actions = {

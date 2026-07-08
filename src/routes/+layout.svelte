@@ -6,7 +6,8 @@
 	// import Rellax from 'rellax';
 	import MobileMenu from '$lib/assets/components/MobileMenu.svelte';
 
-	let { children } = $props();
+	let { children, data } = $props();
+	let seoData = $derived(data.seoData);
 	//
 	let topbar = $state();
 	let header = $state();
@@ -36,6 +37,18 @@
 </script>
 
 <svelte:head>
+	<title>{seoData.title}</title>
+	<meta name="description" content={seoData.description} />
+	<meta name="keywords" content={seoData.keywords} />
+	<meta property="og:title" content={seoData.title} />
+	<meta property="og:description" content={seoData.description} />
+	<meta property="og:image" content={seoData.image} />
+	<meta property="og:url" content={seoData.url} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={seoData.title} />
+	<meta name="twitter:description" content={seoData.description} />
+	<meta name="twitter:image" content={seoData.image} />
+
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">

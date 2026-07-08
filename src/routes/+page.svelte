@@ -20,19 +20,7 @@
 		$inspect('seoData:', seoData);
 	});
 </script>
-<svelte:head>
-	<title>{seoData.title}</title>
-	<meta name="description" content={seoData.description} />
-	<meta name="keywords" content={seoData.keywords} />
-	<meta property="og:title" content={seoData.title} />
-	<meta property="og:description" content={seoData.description} />
-	<meta property="og:image" content={seoData.image} />
-	<meta property="og:url" content={seoData.url} />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={seoData.title} />
-	<meta name="twitter:description" content={seoData.description} />
-	<meta name="twitter:image" content={seoData.image} />
-</svelte:head>
+
 
 <HeroSection />
 <ServicesSection />
