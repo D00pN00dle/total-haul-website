@@ -7,8 +7,9 @@
 	import MobileMenu from '$lib/assets/components/MobileMenu.svelte';
 
 	let { children } = $props();
-	let topbar = $state(null);
-	let header = $state(null);
+	//
+	let topbar = $state();
+	let header = $state();
 	let toggleMenu = $state(false);
 	let heroPaddingTop = writable(0);
 	//@ts-ignore
@@ -17,7 +18,9 @@
 		toggleMenu = !toggleMenu;
 	}
 	$effect(() => {
+		//@ts-ignore
 		const top = topbar?.offsetHeight ?? 0;
+		//@ts-ignore
 		const head = header?.offsetHeight ?? 0;
 		$inspect('topbar height:', top);
 		$inspect('header height:', head);
