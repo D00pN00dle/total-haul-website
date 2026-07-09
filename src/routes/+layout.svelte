@@ -2,9 +2,8 @@
 	//import favicon from '$lib/assets/favicon.ico';
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
-	import { onMount } from 'svelte';
-	// import Rellax from 'rellax';
 	import MobileMenu from '$lib/assets/components/MobileMenu.svelte';
+	import '$lib/assets/site.css';
 
 	let { children, data } = $props();
 	let seoData = $derived(data.seoData);
@@ -57,8 +56,6 @@
 	<!-- link bootstrap 5.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">	<!-- link bootstrap icons -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-	<link rel="stylesheet" href="src/lib/assets/site.css" />
-
 
 </svelte:head>
 
