@@ -56,10 +56,24 @@
 	<!-- link bootstrap 5.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">	<!-- link bootstrap icons -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 </svelte:head>
 
 <MobileMenu {toggleMenu} {handleToggleMenu} />
+<form method="POST">
+  <input type="hidden" name="cf-turnstile-response" value="" />
+
+  <div
+    class="cf-turnstile"
+    data-sitekey={data?.siteKey}
+    data-callback="onTurnstileSuccess"
+    data-expired-callback="onTurnstileExpired"
+  ></div>
+
+  <button type="submit">Submit</button>
+</form>
+
 <div class="topbar" bind:this={topbar}>
 	<div class="wrap">
 		<div class="certs-mini">
@@ -154,6 +168,7 @@
     	</div>
 	</div>
 </footer>
+
 <style>
 	@media (max-width: 980px) {
 		.nav-links-wrap {
