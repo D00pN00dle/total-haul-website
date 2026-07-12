@@ -30,6 +30,12 @@ export function validateInputs(type='', value='') {
             } else {
                 return {valid: false, message: 'Please enter a valid phone number.'};
             }
+        case 'hidden':
+            if (value.trim() !== '') {
+                return {valid: true};
+            } else {
+                return {valid: false, message: 'Invalid token.'};
+            }
         default:
             return {valid: false};
     }

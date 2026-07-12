@@ -2,7 +2,7 @@
 	import { validateInputs } from '../js/validateInputs.js';
 	import { enhance } from '$app/forms';    import { onMount } from 'svelte';
 	import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
-
+	let { data } = $props();
 	let firstName = $state();
 	let lastName = $state();
 	let email = $state();
@@ -23,6 +23,8 @@
 	let materialTouched = $state(false);
 	let scopeTouched = $state(false);
 
+	let turnstileResponse = $state();
+	
 	let firstNameValid = $derived(validateInputs('text', firstName));
 	let lastNameValid = $derived(validateInputs('text', lastName));
 	let emailValid = $derived(validateInputs('email', email));
@@ -32,6 +34,8 @@
 	let timelineValid = $derived(validateInputs('select-one', timeline));
 	let materialValid = $derived(validateInputs('select-one', material));
 	let scopeValid = $derived(validateInputs('textarea', scope));
+	let turnstileValid = $derived(validateInputs('hidden', turnstileResponse));
+
 
 	let isFormValid = $derived(
 		firstNameValid.valid &&
@@ -42,7 +46,8 @@
 			locationValid.valid &&
 			timelineValid.valid &&
 			materialValid.valid &&
-			scopeValid.valid
+			scopeValid.valid &&
+			turnstileValid.valid
 	);
 
 	let isDisabled = $derived(!isFormValid);
@@ -52,9 +57,23 @@
 		// $inspect('firstNameValid:', firstNameValid);
 
 	});
+	/**@param {string} token The token returned by the Turnstile widget upon successful completion of the challenge */
+	function onTurnstileSuccess(token) {
+		turnstileResponse = token;
+  	}
+
+	function onTurnstileExpired() {
+		turnstileResponse = '';
+	}
 
 </script>
-
+  <div
+    class="cf-turnstile fixed-bottom-right"
+    data-sitekey={data?.siteKey}
+    data-callback="onTurnstileSuccess"
+    data-expired-callback="onTurnstileExpired" 
+	data-size="invisible"
+  ></div>
 <section class="cta-band" id="form">
 	<div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
 		<h2>Let's talk about your project.</h2>
@@ -73,6 +92,7 @@
 				}
 			}}
 		>
+			<input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response" bind:value={turnstileResponse} />
 			<div class="row" style="max-width: 800px; margin: 0 auto;">
 				<small class="text-center alert alert-danger mb-2" data-bs-theme="dark">* All fields are required *</small>
 				<div class="col-12 col-md-6">
@@ -215,6 +235,12 @@
 </section>
 
 <style>
+	.fixed-bottom-right {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		z-index: 1000;
+	}
 	@media (max-width: 768px) {
 		.btn {
 			width: 100%;

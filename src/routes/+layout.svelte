@@ -61,18 +61,6 @@
 </svelte:head>
 
 <MobileMenu {toggleMenu} {handleToggleMenu} />
-<form method="POST">
-  <input type="hidden" name="cf-turnstile-response" value="" />
-
-  <div
-    class="cf-turnstile"
-    data-sitekey={data?.siteKey}
-    data-callback="onTurnstileSuccess"
-    data-expired-callback="onTurnstileExpired"
-  ></div>
-
-  <button type="submit">Submit</button>
-</form>
 
 <div class="topbar" bind:this={topbar}>
 	<div class="wrap">

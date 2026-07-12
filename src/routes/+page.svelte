@@ -21,7 +21,6 @@
 	});
 </script>
 
-
 <HeroSection />
 <ServicesSection />
 <WhoSection />
@@ -34,5 +33,6 @@
 <AreaSection />
 <ProjectsSection />
 <FAQsSection />
-<FormSection />
+<FormSection {data}/>
 <ContactSection />
+
