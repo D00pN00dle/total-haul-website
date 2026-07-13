@@ -72,6 +72,7 @@
     data-sitekey={data?.siteKey}
     data-callback="onTurnstileSuccess"
     data-expired-callback="onTurnstileExpired" 
+	data-size="compact"
   ></div>
 <section class="cta-band" id="form">
 	<div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
