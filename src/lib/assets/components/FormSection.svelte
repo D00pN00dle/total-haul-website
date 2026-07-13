@@ -65,6 +65,15 @@
 	function onTurnstileExpired() {
 		turnstileResponse = '';
 	}
+	onMount(() => {
+		/** @type {any} */ (globalThis).onTurnstileSuccess = onTurnstileSuccess;
+		/** @type {any} */ (globalThis).onTurnstileExpired = onTurnstileExpired;
+
+		return () => {
+			delete /** @type {any} */ (globalThis).onTurnstileSuccess;
+			delete /** @type {any} */ (globalThis).onTurnstileExpired;
+		};
+	});
 
 </script>
   <div

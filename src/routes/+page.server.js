@@ -51,7 +51,7 @@ export const actions = {
 				message: formObject.scope ?? ''
 			};
 
-			await wix.items.insert('TestCollection', objectToInsert);
+			await wix.items.insert('TestCollection', {title: 'wix sveltekit test'});
 
 			return { success: true, message: 'Form submitted successfully!' };
 		} catch (error) {
