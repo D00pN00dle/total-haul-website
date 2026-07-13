@@ -3,7 +3,7 @@
 const config = {
   kit: {
     csp: {
-      mode: 'nonce',
+      mode: 'off',
       directives: {
         'default-src': ['self'],
         'script-src': [
