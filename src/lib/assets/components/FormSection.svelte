@@ -103,7 +103,9 @@
 	});
 
 </script>
-<div bind:this={widgetEl} class="fixed-bottom-right {hideTurnstile ? 'd-none' : ''}" out:slide></div>
+{#if !hideTurnstile}
+	<div bind:this={widgetEl} class="fixed-bottom-right" out:slide="{{ duration: 300 }}"></div>
+{/if}
 <section class="cta-band" id="form">
 	<div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
 		<h2>Let's talk about your project.</h2>
