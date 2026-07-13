@@ -3,6 +3,9 @@
 	import { enhance } from '$app/forms';    import { onMount } from 'svelte';
 	import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
 	let { data } = $props();
+	/** @type {HTMLDivElement | null} */
+	let widgetEl = null;
+
 	let firstName = $state();
 	let lastName = $state();
 	let email = $state();
@@ -67,15 +70,35 @@
 		turnstileResponse = '';
 	}
 
+	onMount(() => {
+		/** @type {Window & { turnstile?: { render: (el: HTMLElement, opts: any) => string } }} */
+		const w = window;
+
+		const render = () => {
+			if (!w.turnstile || !widgetEl) return;
+			w.turnstile.render(widgetEl, {
+				sitekey: data?.siteKey,
+				size: 'compact',
+				callback: onTurnstileSuccess,
+				'expired-callback': onTurnstileExpired
+			});
+		};
+
+		if (w.turnstile) {
+			render();
+			return;
+		}
+
+		const s = document.createElement('script');
+		s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+		s.async = true;
+		s.defer = true;
+		s.onload = render;
+		document.head.appendChild(s);
+	});
 
 </script>
-  <div
-    class="cf-turnstile fixed-bottom-right"
-    data-sitekey={data?.siteKey}
-    data-callback={onTurnstileSuccess}
-    data-expired-callback={onTurnstileExpired} 
-	data-size="compact"
-  ></div>
+<div bind:this={widgetEl} class="fixed-bottom-right"></div>
 <section class="cta-band" id="form">
 	<div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
 		<h2>Let's talk about your project.</h2>
