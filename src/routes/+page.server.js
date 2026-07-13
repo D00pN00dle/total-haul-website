@@ -1,5 +1,6 @@
 import { fail, json } from '@sveltejs/kit';
 import { getWixClient } from '$lib/server/wix';
+import { TURNSTILE_SECRET_KEY } from '$env/static/private';
 
 export async function load({ request, url }) {
     //console.log('load params:', url);
@@ -12,6 +13,24 @@ export const actions = {
             const formData = await request.formData();
             const formObject = Object.fromEntries(formData.entries());
             const wix = await getWixClient();
+            const token = formObject['cf-turnstile-response'];
+            if (!token || typeof token !== 'string' || token.trim() === '') {
+                return fail(400, { error: 'Turnstile token is missing or invalid' });
+            }
+            const verfiyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    secret: TURNSTILE_SECRET_KEY,
+                    response: token
+                })
+            });
+            const response = await verfiyRes.json();
+            if (!response.success) {
+                return fail(400, { error: 'Turnstile verification failed' });
+            }
             //console.log('formObject:', formObject);
             // might want to think about sterilizing fields before inserting into Wix collection, depending on your needs
             const objectToInsert = {
