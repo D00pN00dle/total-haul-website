@@ -60,6 +60,7 @@
 	/**@param {string} token The token returned by the Turnstile widget upon successful completion of the challenge */
 	function onTurnstileSuccess(token) {
 		turnstileResponse = token;
+		console.log('Turnstile success token:', token);
   	}
 
 	function onTurnstileExpired() {
