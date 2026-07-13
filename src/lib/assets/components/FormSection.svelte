@@ -25,6 +25,7 @@
 	let timelineTouched = $state(false);
 	let materialTouched = $state(false);
 	let scopeTouched = $state(false);
+	let hideTurnstile = $state(false);
 
 	let turnstileResponse = $state();
 	
@@ -64,6 +65,9 @@
 	function onTurnstileSuccess(token) {
 		turnstileResponse = token;
 		console.log('Turnstile success token:', token);
+		setTimeout(() => {
+			hideTurnstile = true;
+		}, 3000); // Added a delay to ensure the UI updates correctly
   	}
 
 	function onTurnstileExpired() {
@@ -98,7 +102,7 @@
 	});
 
 </script>
-<div bind:this={widgetEl} class="fixed-bottom-right"></div>
+<div bind:this={widgetEl} class="fixed-bottom-right {hideTurnstile ? 'd-none' : ''}"></div>
 <section class="cta-band" id="form">
 	<div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
 		<h2>Let's talk about your project.</h2>
@@ -235,13 +239,13 @@
 				</div>
                 {#if formResult?.type === 'success'}
                     <div class="alert alert-success text-center mt-2 d-flex flex-row w-100" data-bs-theme="dark">
-                        <p class="text-success">Your request has been submitted successfully!</p>
-						<button class="btn btn-link ms-auto" title="close alert" onclick={() => (formResult = null)}><i class="bi bi-x"></i></button>
+                        <p class="text-success" style="width: 100% !important;">Your request has been submitted successfully!</p>
+						<button class="btn-close ms-auto" title="close alert" onclick={() => (formResult = null)}><i class="bi bi-x"></i></button>
                     </div>
                 {:else if formResult?.type === 'error'}
                     <div class="alert alert-danger text-center mt-2 d-flex flex-row w-100" data-bs-theme="dark">
-                        <p class="text-danger">There was an error submitting your request. Please try again.</p>
-						<button class="btn btn-link ms-auto" title="close alert" onclick={() => (formResult = null)}><i class="bi bi-x"></i></button>
+                        <p class="text-danger" style="width: 100% !important;">There was an error submitting your request. Please try again.</p>
+						<button class="btn-close ms-auto" title="close alert" onclick={() => (formResult = null)}><i class="bi bi-x"></i></button>
                     </div>
                 {/if}
 				<div class="hero-cta">
@@ -265,6 +269,10 @@
 		bottom: 0;
 		right: 0;
 		z-index: 1000;
+	}
+	.btn-close {
+		width: 22px;
+		height: 22px;
 	}
 	@media (max-width: 768px) {
 		.btn {
