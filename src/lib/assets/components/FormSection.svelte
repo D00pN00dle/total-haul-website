@@ -65,22 +65,14 @@
 	function onTurnstileExpired() {
 		turnstileResponse = '';
 	}
-	onMount(() => {
-		/** @type {any} */ (globalThis).onTurnstileSuccess = onTurnstileSuccess;
-		/** @type {any} */ (globalThis).onTurnstileExpired = onTurnstileExpired;
 
-		return () => {
-			delete /** @type {any} */ (globalThis).onTurnstileSuccess;
-			delete /** @type {any} */ (globalThis).onTurnstileExpired;
-		};
-	});
 
 </script>
   <div
     class="cf-turnstile fixed-bottom-right"
     data-sitekey={data?.siteKey}
-    data-callback="onTurnstileSuccess"
-    data-expired-callback="onTurnstileExpired" 
+    data-callback={onTurnstileSuccess}
+    data-expired-callback={onTurnstileExpired} 
 	data-size="compact"
   ></div>
 <section class="cta-band" id="form">
