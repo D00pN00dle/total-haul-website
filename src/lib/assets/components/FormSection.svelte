@@ -2,6 +2,7 @@
 	import { validateInputs } from '../js/validateInputs.js';
 	import { enhance } from '$app/forms';    import { onMount } from 'svelte';
 	import { parallaxLeave } from '$lib/assets/js/parallaxLeave.js';
+	import { slide } from 'svelte/transition';
 	let { data } = $props();
 	/** @type {HTMLDivElement | null} */
 	let widgetEl = null;
@@ -102,7 +103,7 @@
 	});
 
 </script>
-<div bind:this={widgetEl} class="fixed-bottom-right {hideTurnstile ? 'd-none' : ''}"></div>
+<div bind:this={widgetEl} class="fixed-bottom-right {hideTurnstile ? 'd-none' : ''}" transition:slide></div>
 <section class="cta-band" id="form">
 	<div class="wrap" use:parallaxLeave={{ maxShift: 80, speed: 3, direction: 'up' }}>
 		<h2>Let's talk about your project.</h2>
