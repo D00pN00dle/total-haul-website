@@ -75,6 +75,29 @@
 		turnstileResponse = '';
 	}
 
+	function resetInputs() {
+		firstName = '';
+		lastName = '';
+		email = '';
+		phone = '';
+		organization = '';
+		location = '';
+		timeline = '';
+		material = '';
+		scope = '';
+		turnstileResponse = '';
+		firstNameTouched = false;
+		lastNameTouched = false;
+		emailTouched = false;
+		phoneTouched = false;
+		organizationTouched = false;
+		locationTouched = false;
+		timelineTouched = false;
+		materialTouched = false;
+		scopeTouched = false;
+		hideTurnstile = false;
+  	}
+
 	onMount(() => {
 		/** @type {Window & { turnstile?: { render: (el: HTMLElement, opts: any) => string } }} */
 		const w = window;
@@ -121,6 +144,9 @@
 				return (result) => {
 					console.log('Form submission result:', result);
 					formResult = result.result;
+					if (result.result?.type === 'success') {
+						resetInputs();
+					}
 				}
 			}}
 		>
